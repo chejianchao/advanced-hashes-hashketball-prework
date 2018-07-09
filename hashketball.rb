@@ -1,5 +1,5 @@
 # Write your code here!
-
+require "pry"
 def game_hash
   return  {:home=> { :team_name=>"Brooklyn Nets",:colors=>["Black", "White"],
                       :players=>{
@@ -65,6 +65,17 @@ def get_player(name)
   end
   return player
 end
+
+def get_player_by_number(number)
+  game_hash.each do |key, team_data|
+    team_data[:players].each do |name, player|
+      if player[:number] == number
+        return name
+      end
+    end
+  end
+end
+
 def num_points_scored(name)
   player = get_player(name)
   return player[:points]
@@ -127,7 +138,5 @@ def big_shoe_rebounds
   return rebound
 end
 
-
-
-
-
+binding.pry
+get_player_by_number(0)
